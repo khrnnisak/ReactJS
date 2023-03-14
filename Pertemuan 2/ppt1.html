@@ -1,0 +1,50 @@
+ <!-- 
+    Nama    : Inda Khoirun Nisak
+    Kelas   : TI-3B
+    Nim     : 2041720020 
+-->
+
+
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>React Uncover</title>
+    </head>
+    <body>
+        <h1>Belajar Javascript</h1>
+        <div id="root"></div>
+        <button onclick="renderData()">Tampilkan Data Mahasiswa</button>
+        <script>
+           const mahasiswas = [
+            {
+                nama: "Eka",
+                umur: 18,
+                jurusan: "Teknik Informatika"
+            },
+            {
+                nama: "Lisa",
+                umur: 19,
+                jurusan: "Teknik Informatika"
+            },
+            {
+                nama: "Rudi",
+                umur: 19,
+                jurusan: "Teknik Informatika"
+            }
+           ];
+
+           const prosesMahasiswa = (mahasiswa) =>
+           `<p>${mahasiswa.nama} (${mahasiswa.umur} tahun) - 
+                <i>${mahasiswa.jurusan}</i></p>`;
+
+           const formatMahasiswas = mahasiswas.map(prosesMahasiswa);
+
+           const renderData = () => {
+            document.getElementById('root').innerHTML = formatMahasiswas.join("");
+           }
+           
+        </script>
+    </body>
+</html>

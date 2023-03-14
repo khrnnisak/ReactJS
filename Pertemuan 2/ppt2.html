@@ -1,0 +1,42 @@
+<!-- 
+    Nama    : Inda Khoirun Nisak
+    Kelas   : TI-3B
+    Nim     : 2041720020 
+-->
+
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Uncover</title>
+    </head>
+    <body>
+        <h1>Belajar JavaScript</h1>
+        <script>
+            const getUser = () => {
+                return new Promise((resolve,reject) =>{
+                setTimeout(() => {
+                    //resolve("Rudi");
+                    reject("Something wrong....");
+                    
+                }, 2000)
+            })
+        }
+            const tryGetName = async()=>{
+                try{
+                    let username = await getUser();
+                    console.log(username);
+                }
+                catch (error){
+                    console.log(error);
+                }
+                
+            };
+
+            console.log("Start...");
+            tryGetName();
+            console.log("Finish");
+        </script>
+    </body>
+</html>
