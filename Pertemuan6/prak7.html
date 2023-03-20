@@ -19,17 +19,15 @@
         <script src="../Pertemuan5/js/babel.js"></script>
         <script type="text/babel">
             
-            class Belajar extends React.Component{
-                constructor(props){
-                    super(props);
-                    this.judul = this.props.materi.toLocaleUpperCase();
-                }
-                render(){
-                    return <h1>Belajar {this.judul}</h1>;
-                }
-            }
+            const Belajar = (props) => <h1>Belajar {props.materi}</h1>;
 
-            const myElement = <Belajar materi="React" />
+            const myElement = (
+                <div>
+                    <Belajar materi = "React" />    
+                    <Belajar materi = "Javascript" />  
+                    <Belajar materi = "Proframmer" />  
+                </div>
+            )
 
             ReactDOM.createRoot(document.getElementById('root')).render(myElement);
         </script>
