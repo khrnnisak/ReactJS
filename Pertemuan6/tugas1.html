@@ -53,21 +53,23 @@
                         },
                     ]
                     return(
-                        books.map( (book) =>
+                        
                             <React.Fragment>
                                 <h1>Daftar Buku - Novel</h1>
                                 <hr />
                                 <section style={{display: "flex", textAlign: "center", flexDirection: "row"}}>
+                            {        books.map( (book) =>
                                     <Buku 
                                         judul= {book.judul}
                                         penulis={book.penulis}
                                         pasFoto = {book.pasFoto}
                                     
                                     />
+                                    )}
                                 </section>
                             </React.Fragment>
                         )
-                    )
+                    
                 }
             }
 
