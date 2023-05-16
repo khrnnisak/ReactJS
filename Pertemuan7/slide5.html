@@ -1,0 +1,39 @@
+<!-- 
+    Nama : Inda Khoirun Nisak
+    Kelas : TI-3B
+    Absen : 08
+    Nim : 2041720020 
+-->
+
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Uncover</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="../Pertemuan5/js/react.development.js"></script>
+        <script src="../Pertemuan5/js/react-dom.development.js"></script>
+        <script src="../Pertemuan5/js/babel.js"></script>
+
+        <script type="text/babel">
+            class MyApp extends React.Component{
+
+                handleButtonClick(){
+                    alert("Hello React");
+                }
+                render(){
+                    return(
+                        <div>
+                            <h1>Belajar React</h1>
+                            <button onClick={this.handleButtonClick}>Click Me </button>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+        </script>    
+    </body>
+</html>

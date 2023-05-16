@@ -1,0 +1,135 @@
+<!-- 
+    Nama : Inda Khoirun Nisak
+    Kelas : TI-3B
+    Absen : 08
+    Nim : 2041720020 
+-->
+
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Uncover</title>
+        <style>
+            #root{
+                display: flex;
+                justify-content: center;
+            }
+            div {
+                text-align: center;
+            }
+            button {
+                background-color: white;
+                cursor: pointer;
+                padding: 10px 20px;
+                font-weight: bold;
+                border: 1px solid gray;
+                box-shadow: 2px 2px 2px black;
+                margin: 10px;
+            }
+            button:hover{
+                box-shadow: 1px 1px 1px black;
+                background-color: #f1f1f1;
+            }
+            img{
+                box-shadow: 0px 0px 20px 0px black;
+                margin:  10px;
+            }
+            figcaption{
+                text-align: center;
+                background-color: gainsboro;
+                font-size: 1.5em;
+                padding: 10px 20px;
+                margin: 15px 0;
+                box-shadow: 12px 12px 0px black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="../Pertemuan5/js/react.development.js"></script>
+        <script src="../Pertemuan5/js/react-dom.development.js"></script>
+        <script src="../Pertemuan5/js/babel.js"></script>
+        <script type="text/babel">
+             const buku = [
+                {
+                    id: "01",
+                    judul: "Caraval",
+                    penulis: "Stephanie Garber",
+                    pasFoto: "book1.png"
+                },
+                {
+                    id: "02",
+                    judul: "Legendary",
+                    penulis: "Stephanie Garber",
+                    pasFoto: "book2.png"
+                },
+                {
+                    id: "03",
+                    judul: "Finale",
+                    penulis: "Stephanie Garber",
+                    pasFoto: "book3.png"
+                },
+            ];
+            // class Buku extends React.Component{
+               
+            //     render(){
+            //         return(
+            //             <figure>
+            //                 <img 
+            //                     src={"img/" + this.pasFoto} 
+            //                     alt={this.judul}
+            //                 />    
+            //                 <figcaption>
+            //                     {this.judul} ({this.penulis})    
+            //                 </figcaption>
+            //             </figure>
+            //         )
+            //     }
+            // }
+            class MyApp extends React.Component{
+                constructor(){
+                    super();
+                    this.state = {
+                        judul : buku[0].judul,
+                        penulis : buku[0].penulis,
+                        pasFoto : buku[0].pasFoto,
+                    }
+                }
+                
+                handleButtonClick = (event) =>{
+                    let index = parseInt(event.target.getAttribute('index'));
+                    this.setState({
+                        judul : buku[index].judul,
+                        penulis : buku[index].penulis,
+                        pasFoto : buku[index].pasFoto,
+                    });
+                }
+                render(){
+                    return(
+                        <div>
+                            {
+                                buku.map((buku, i)=>
+                                    <button
+                                        key = {buku.id}
+                                        onClick = {this.handleButtonClick}
+                                        index={i}
+                                    >{buku.judul}</button>
+                                )
+                            }
+                            <img 
+                                src={"img/" + this.state.pasFoto} 
+                                alt={this.state.judul}
+                            />   
+                            <figcaption>
+                                {this.state.judul} ({this.state.penulis})    
+                            </figcaption>
+                        </div>
+                    )
+                }
+            }
+	        ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+        </script>
+    </body>
+</html>

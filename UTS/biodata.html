@@ -1,0 +1,107 @@
+<!-- 
+    Nama : Inda Khoirun Nisak
+    Kelas : TI-3B
+    Absen : 08
+    Nim : 2041720020 
+-->
+
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="../Pertemuan5/js/react.development.js"></script>
+    <script src="../Pertemuan5/js/react-dom.development.js"></script>
+    <script src="../Pertemuan5/js/babel.js"></script>
+    <script type="text/babel">
+
+        const Nisak = (props) => {
+            return (
+                <React.Fragment>
+                    <hr />
+                    <section style={{ display: "flex", flexDirection: "row" }}>
+                        <img width="200px" height="250px" src={"img/" + props.foto} alt={props.nama} />
+                        <table>
+                            <tbody>
+                                <tr>
+                                <td>Nama : {props.nama}</td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat : {props.alamat}</td>
+                                </tr>
+                                <tr>
+                                    <td>Jurusan : {props.jurusan}</td>
+                                </tr>
+                                <tr>
+                                    <td>No HP : {props.noHp}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nama Ayah : {props.namaOrtu}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <hr />
+                </React.Fragment>
+            )
+        }
+        const Tombol = () => {
+            const biodata =
+                {
+                    id: "01",
+                    nama: "Inda Khoirun Nisak",
+                    alamat: "Desa Randugading RT.15 RW.04 Tajinan Malang",
+                    jurusan: "Teknologi Informasi",
+                    noHp: "082228213715",
+                    namaOrtu: "Jumali",
+                    foto: "foto.jpg"
+                }
+            const handleClick = () =>{
+                alert(`Nama :  ${biodata.nama} Alamat :  ${biodata.alamat} Jurusan :  ${biodata.jurusan} No HP :  ${biodata.noHp} Nama Ayah  :  ${biodata.namaOrtu}`)
+            }
+            return (
+                <button onClick={handleClick}>
+                    Biodata
+                </button>
+            )
+        }
+        class Parent extends React.Component {
+            
+            render() {
+                const biodata =
+                {
+                    id: "01",
+                    nama: "Inda Khoirun Nisak",
+                    alamat: "Desa Randugading RT.15 RW.04 Tajinan Malang",
+                    jurusan: "Teknologi Informasi",
+                    noHp: "082228213715",
+                    namaOrtu: "Jumali",
+                    foto: "foto.jpg"
+                }
+                return (
+                    <React.Fragment>
+                        <h1 style={{ textAlign: "center" }}>UTS Inda Khoirun Nisak</h1>
+                        <Nisak
+                            nama={biodata.nama}
+                            alamat={biodata.alamat}
+                            jurusan={biodata.jurusan}
+                            noHp={biodata.noHp}
+                            namaOrtu={biodata.namaOrtu}
+                            foto={biodata.foto}
+
+                        />
+                        <Tombol />
+                    </React.Fragment>
+                )
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Parent />);
+    </script>
+</body>
+</html>

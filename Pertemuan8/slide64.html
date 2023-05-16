@@ -1,0 +1,78 @@
+<!-- 
+    Nama : Inda Khoirun Nisak
+    Kelas : TI-3B
+    Absen : 08
+    Nim : 2041720020 
+-->
+
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Uncover</title>
+        <style>
+            #root{
+                display: flex;
+                justify-content: center;
+            }
+            div {
+                text-align: center;
+            }
+            img{
+                box-shadow: 0px 0px 20px 0px black;
+                margin:  10px;
+            }
+            figcaption{
+                text-align: center;
+                background-color: gainsboro;
+                font-size: 1.5em;
+                padding: 10px 20px;
+                margin: 15px 0;
+                box-shadow: 12px 12px 0px black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="../Pertemuan5/js/react.development.js"></script>
+        <script src="../Pertemuan5/js/react-dom.development.js"></script>
+        <script src="../Pertemuan5/js/babel.js"></script>
+        <script type="text/babel">
+            class Buku extends React.Component{
+                render(){
+                    return(
+                        <figure>
+                            <img 
+                                src={"img/" + this.props.pasFoto} 
+                                alt={this.props.judul}
+                            />    
+                            <figcaption>
+                                {this.props.judul} ({this.props.penulis})    
+                            </figcaption>
+                        </figure>
+                    )
+                }
+            }
+            class MyApp extends React.Component{
+                constructor(){
+                    super()
+                    this.state = {
+                        judul : "Caraval",
+                        penulis : "Stephanie Garber",
+                        pasFoto : "book1.png"
+                    };
+                }
+                render(){
+                    return(
+                        <div>
+                            <Buku judul = {this.state.judul} penulis = {this.state.penulis} 
+                                pasFoto={this.state.pasFoto}/>
+                        </div>
+                    )
+                }
+            }    
+	        ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!-- 
+    Nama : Inda Khoirun Nisak
+    Kelas : TI-3B
+    Absen : 08
+    Nim : 2041720020 
+-->
+
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Uncover</title>
+       
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="../Pertemuan5/js/react.development.js"></script>
+        <script src="../Pertemuan5/js/react-dom.development.js"></script>
+        <script src="../Pertemuan5/js/babel.js"></script>
+        <script type="text/babel">
+            const Tombol = (props) => {
+                return(
+                    <button onClick={() => props.onTombolClick(parseInt(props.counterChange))}>
+                        {props.children}
+                    </button>
+                )
+            }
+            const MyApp = () => {
+                const [counter, setCounter] = React.useState(0);
+                
+                const handleTombolClick = (change) => {
+                    setCounter((prevCount) => {return prevCount + change});
+                }
+
+                return(
+                    <div>
+                        <h1>{counter}</h1>
+                        <Tombol onTombolClick = {handleTombolClick} counterChange="-1">- 1</Tombol>    
+                        <Tombol onTombolClick = {handleTombolClick} counterChange="+1">+ 1</Tombol>  
+                    </div>
+                )
+            }  
+	        ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+        </script>
+    </body>
+</html>
