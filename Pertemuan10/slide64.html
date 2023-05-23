@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            React Uncover
+        </title>
+        <style>
+            #root { 
+                display: flex; 
+                justify-content: center;
+                font-size: 1.2em; 
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .container {
+                margin-top: 2rem;
+                padding: 2rem 3rem;
+                box-shadow: 8px 8px 0px black;
+                border: 2px solid black;
+            }
+            .container div{
+                padding-bottom: 0.6rem;
+            }
+            div label:first-child{ 
+                display: inline-block; 
+                width: 180px;
+            }
+            label {
+                vertical-align: top;
+            }
+            input[type="text"], input[type="email"], textarea, select { 
+                font-size: 1em; 
+                width: 230px; 
+            }
+            button { 
+                background-color: white; 
+                cursor: pointer; 
+                padding: 10px 20px; 
+                font-weight: bold; 
+                border: 1px solid gray; 
+                box-shadow: 2px 2px 2px black; 
+                margin: 10px;
+            }
+            button:hover{
+                box-shadow: 1px 1px 1px black; 
+                background-color: #f1f1f1; 
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script crossorigin src="js/react.development.js"></script>
+        <script crossorigin src="js/react-dom.development.js"></script>
+        <script crossorigin src="js/babel.js"></script>
+        <script type="text/babel">
+            /*
+                Nama  : Annisa Fitri Yuliandra
+                Kelas : TI 3B
+                NIM   : 2041720123
+            */
+            class MyApp extends React.Component {
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        username : "",
+                        email : "",
+                        errors : {username:"", email:""},
+                    };
+                }
+                handleButtonClick = (event) => {
+                    this.setState({[event.target.name] : event.target.value });
+                }
+                handleInputClick = (event) => {
+                    event.preventDefault();
+                    const username = this.state.username;
+                    const email = this.state.email;
+                    let errors = this.state.errors;
+
+                    if (!username){
+                        errors.username = "Username tidak boleh kosong";
+                    }else if(username.length < 6){
+                        errors.username = "Min 6 karakter";
+                    }else{
+                        errors.username = "";
+                    }
+
+                    if (!email){
+                        errors.email = "Email tidak boleh kosong";
+                    }else if((!/\S+@\S+\.\S+/.test(email))){
+                        errors.email = "Email tidak valid";
+                    }else{
+                        errors.email = "";
+                    }
+                    this.setState({errors: errors})
+                    let valid = true;
+                    for (let prop in errors){
+                        if(errors[prop].length > 0){
+                            valid = false;
+                        }
+                    }
+                    if(valid){
+                        console.log(valid);
+                        alert("All Valid")
+                    }
+                }
+                render(){
+                    return (
+                        <div className="container">
+                            <form onSubmit={this.handleInputClick} noValidate>
+                                <div>
+                                    <label htmlFor="username">username</label> 
+                                    <input type="text" name="username" id="username" value={this.state.username} onChange={this.handleButtonClick} /> 
+                                    {this.state.errors.username && <small>{this.state.errors.username}</small>}
+                                </div>
+                                <div> 
+                                    <label htmlFor="email">Email</label> 
+                                    <input type="email" name="email" id="email" value={this.state.email} onChange={this.handleButtonClick} /> 
+                                    {this.state.errors.email && <small>{this.state.errors.email}</small>}
+                                </div> 
+                                <input type="submit"/> 
+                            </form >
+                            {this.state.errors && <p>{this.state.errors}</p>}
+                        </div>
+                    )
+                }
+            }
+	        ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+        </script>
+    </body>
+</html>
